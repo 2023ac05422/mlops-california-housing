@@ -46,7 +46,7 @@ A complete **MLOps project** demonstrating best practices from **data versioning
 
 ### 1️⃣ Clone & Install
 ```bash
-git clone [https://github.com/2023ac05422/mlops-california-housing.git
+git clone https://github.com/2023ac05422/mlops-california-housing.git
 cd mlops-california-housing
 python -m venv venv
 source venv/bin/activate   # or .\venv\Scripts\activate on Windows
