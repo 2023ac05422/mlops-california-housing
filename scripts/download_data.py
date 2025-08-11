@@ -1,6 +1,5 @@
 # scripts/download_data.py
 from pathlib import Path
-import pandas as pd
 from sklearn.datasets import fetch_california_housing
 
 OUT_DIR = Path("data/raw")
