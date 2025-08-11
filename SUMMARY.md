@@ -1,50 +1,82 @@
-# MLOps Pipeline — California Housing (Regression)
+# 📄 MLOps Pipeline Summary — California Housing
 
-## Overview
-End-to-end MLOps pipeline using Git, DVC, MLflow, FastAPI, Docker, and GitHub Actions.
-Dataset: California Housing (sklearn). Target: `MedHouseVal`.
+## 📌 Goal
+Build, track, package, deploy, and monitor a regression model using best MLOps practices.
 
-## Architecture
-1. **Data Versioning**: `src/data/make_dataset.py` fetches dataset to `data/raw/`. Tracked by DVC.
-2. **Model Dev & Tracking**:
-   - Models: `LinearRegression`, `DecisionTreeRegressor`.
-   - MLflow logs params/metrics/artifacts; best by RMSE exported to `artifacts/production_model/pipeline.pkl`.
-3. **Serving**:
-   - FastAPI (`api/main.py`): `/predict` (Pydantic validation), `/health`, `/metrics` (Prometheus).
-   - Logs to SQLite (`api/db.py`).
-4. **Containerization**:
-   - Dockerfile builds image, runs `uvicorn`.
-5. **CI/CD**:
-   - GitHub Actions: lint, test, build, push to Docker Hub on `main`.
-6. **Monitoring**:
-   - Request counter & latency histogram at `/metrics`.
-   - Request+prediction audit logs in `predictions.sqlite`.
+---
 
-## How to Run (local)
-```bash
-python -m venv venv
-./venv/Scripts/activate  # Windows PowerShell
-python -m pip install --upgrade pip
-pip install -r requirements.txt
+## 🔧 Architecture
 
-python -m src.data.make_dataset
-dvc init
-dvc add data/raw/california_housing.csv
+**Step 1: Data Versioning**
+- Script: `src/data/make_dataset.py`
+- Saves dataset to `data/raw/california_housing.csv`
+- Tracked via **DVC**
 
-python -m src.models.train
+**Step 2: Model Development & Tracking**
+- Models: `Linear Regression`, `Decision Tree Regressor`
+- Framework: `scikit-learn`
+- Tracking: **MLflow** logs parameters, metrics, and artifacts
+- Selection: Best RMSE → exported to `artifacts/production_model/pipeline.pkl`
 
-uvicorn api.main:app --reload --port 8000
-# test
-curl -X POST "http://127.0.0.1:8000/predict" -H "Content-Type: application/json" -d '{"MedInc":8.3,"HouseAge":41.0,"AveRooms":5.9,"AveBedrms":1.1,"Population":980.0,"AveOccup":2.7,"Latitude":34.2,"Longitude":-118.3}'
-```
+**Step 3: Model Serving**
+- Framework: **FastAPI**
+- Endpoints:
+  - `/health` — Status & model version
+  - `/predict` — Returns prediction
+  - `/metrics` — Prometheus-compatible metrics
+- Input validation: **Pydantic**
 
-## Docker
-```bash
-docker build -t kbatta/california-regressor:latest .
-docker run -p 8000:8000 kbatta/california-regressor:latest
-```
+**Step 4: Containerization**
+- **Dockerfile** builds a minimal image with FastAPI app
 
-## Links (fill after you push)
-- GitHub: https://github.com/2023ac05422/mlops-california-housing.git
-- Docker Hub: 
-- MLflow UI (optional): http://127.0.0.1:5000
+**Step 5: CI/CD**
+- **GitHub Actions**: Lint → Test → Build → Push to Docker Hub
+- Secrets used:
+  - `DOCKERHUB_USERNAME`
+  - `DOCKERHUB_TOKEN`
+
+**Step 6: Monitoring**
+- **Prometheus** scrapes `/metrics`
+- **Grafana dashboard** shows:
+  - Total predictions
+  - Requests per second
+  - Latency percentiles (p50, p90, p99)
+
+---
+
+## 📊 Key Metrics
+
+| Metric  | Description                       |
+|---------|-----------------------------------|
+| RMSE    | Root Mean Squared Error           |
+| MAE     | Mean Absolute Error               |
+| R²      | Coefficient of Determination      |
+| Latency | API response time histogram       |
+
+---
+
+## 📷 Screenshots
+*(Replace placeholders in `docs/` before submission)*
+
+- ![MLflow UI](docs/mlflow_runs.png)
+- ![API Prediction](docs/api_predict.png)
+- ![Grafana Dashboard](docs/grafana_dashboard.png)
+
+---
+
+## 🔗 Useful Links
+- **GitHub Repo:** [https://github.com/YourUsername/mlops-california-housing](https://github.com/YourUsername/mlops-california-housing)
+- **Docker Hub:** [https://hub.docker.com/r/YourDockerHub/california-regressor](https://hub.docker.com/r/YourDockerHub/california-regressor)
+- **MLflow UI:** `http://127.0.0.1:5000`
+- **Prometheus:** `http://localhost:9090`
+- **Grafana:** `http://localhost:3000`
+
+---
+
+## 👥 Contributors
+Thanks to the following people who contributed to this project:
+
+| Contributor | GitHub Profile |
+|-------------|----------------|
+| **Your Name** | [@YourUsername](https://github.com/YourUsername) |
+| *(Optional)* Collaborator Name | *(GitHub Profile Link)* |
