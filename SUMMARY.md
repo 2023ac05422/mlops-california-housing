@@ -40,11 +40,11 @@ curl -X POST "http://127.0.0.1:8000/predict" -H "Content-Type: application/json"
 
 ## Docker
 ```bash
-docker build -t <dockerhub>/california-regressor:latest .
-docker run -p 8000:8000 <dockerhub>/california-regressor:latest
+docker build -t kbatta/california-regressor:latest .
+docker run -p 8000:8000 kbatta/california-regressor:latest
 ```
 
 ## Links (fill after you push)
-- GitHub: <repo>
-- Docker Hub: <image>
+- GitHub: https://github.com/2023ac05422/mlops-california-housing.git
+- Docker Hub: 
 - MLflow UI (optional): http://127.0.0.1:5000

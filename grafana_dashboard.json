@@ -1,0 +1,58 @@
+{
+  "id": "5ec3f208-ab84-4212-a778-01a2f3813aeb",
+  "uid": "cali-mlops",
+  "title": "California API — Predictions",
+  "timezone": "browser",
+  "schemaVersion": 38,
+  "version": 1,
+  "refresh": "5s",
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Total Predictions",
+      "gridPos": {"x": 0, "y": 0, "w": 6, "h": 4},
+      "targets": [{
+        "expr": "sum(pred_requests_total)",
+        "legendFormat": "total",
+        "refId": "A",
+        "datasource": {"type": "prometheus", "uid": "Prometheus"}
+      }]
+    },
+    {
+      "type": "timeSeries",
+      "title": "Requests per Second",
+      "gridPos": {"x": 6, "y": 0, "w": 18, "h": 4},
+      "targets": [{
+        "expr": "rate(pred_requests_total[1m])",
+        "legendFormat": "rps",
+        "refId": "A",
+        "datasource": {"type": "prometheus", "uid": "Prometheus"}
+      }]
+    },
+    {
+      "type": "timeSeries",
+      "title": "Latency p50 / p90 / p99 (s)",
+      "gridPos": {"x": 0, "y": 4, "w": 24, "h": 8},
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.5, sum(rate(pred_request_latency_seconds_bucket[5m])) by (le))",
+          "legendFormat": "p50",
+          "refId": "A",
+          "datasource": {"type": "prometheus", "uid": "Prometheus"}
+        },
+        {
+          "expr": "histogram_quantile(0.9, sum(rate(pred_request_latency_seconds_bucket[5m])) by (le))",
+          "legendFormat": "p90",
+          "refId": "B",
+          "datasource": {"type": "prometheus", "uid": "Prometheus"}
+        },
+        {
+          "expr": "histogram_quantile(0.99, sum(rate(pred_request_latency_seconds_bucket[5m])) by (le))",
+          "legendFormat": "p99",
+          "refId": "C",
+          "datasource": {"type": "prometheus", "uid": "Prometheus"}
+        }
+      ]
+    }
+  ]
+}
