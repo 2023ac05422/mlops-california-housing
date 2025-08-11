@@ -28,7 +28,8 @@ def log_prediction(payload: dict, prediction: float, model_version: str):
     conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
     cur.execute(
-        "INSERT INTO prediction_logs (timestamp, payload, prediction, model_version) VALUES (?, ?, ?, ?)",
+        """INSERT INTO prediction_logs (timestamp, payload, prediction, model_version) 
+            VALUES (?, ?, ?, ?)""",
         (
             datetime.utcnow().isoformat(),
             json.dumps(payload),
