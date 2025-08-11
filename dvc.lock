@@ -1,0 +1,14 @@
+schema: '2.0'
+stages:
+  make_dataset:
+    cmd: python -m src.data.make_dataset
+    deps:
+    - path: src/data/make_dataset.py
+      hash: md5
+      md5: dad82e47f81fb3590ccf389d580fc814
+      size: 338
+    outs:
+    - path: data/raw/california_housing.csv
+      hash: md5
+      md5: fa9fe4cf24f70b69ac65fb33062ddf34
+      size: 1915795
