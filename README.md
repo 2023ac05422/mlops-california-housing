@@ -1,8 +1,8 @@
 # 🏗️ California Housing — End-to-End MLOps Pipeline
 
-![GitHub last commit](https://img.shields.io/github/last-commit/YourUsername/mlops-california-housing?style=for-the-badge)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/YourUsername/mlops-california-housing/ci.yml?style=for-the-badge)
-![Docker Pulls](https://img.shields.io/docker/pulls/YourDockerHub/california-regressor?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/2023ac05422/mlops-california-housing?style=for-the-badge)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/2023ac05422/mlops-california-housing/ci.yml?style=for-the-badge)
+[![Pulls](https://img.shields.io/docker/pulls/kbatta/california-regressor?style=for-the-badge)](https://hub.docker.com/repository/docker/kbatta/california-regressor)
 
 A complete **MLOps project** demonstrating best practices from **data versioning** to **monitoring** using:
 
