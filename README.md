@@ -122,10 +122,6 @@ docker compose up -d
 - **API Documentation:** `http://localhost:8000/docs`
 
 ---
-
-## 👥 Contributors
-Thanks to the following people who contributed to this project:
-
 ## 👥 Contributors
 Thanks to the following people who contributed to this project:
 
@@ -135,3 +131,6 @@ Thanks to the following people who contributed to this project:
 | **G ANIL KUMAR** | 2023aa05757 |
 | **KARTIK BATTA | 2023ac05422 |
 | **NANCY AGARWAL | 2023ac05979 |
+
+## 🎥 Project Demo Video
+[Video Demo](https://drive.google.com/file/d/1mfTFDw31THxYGKIQpS3uSKrHTZ9K1B6h/view?usp=drive_link)
