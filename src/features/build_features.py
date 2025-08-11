@@ -5,8 +5,18 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 
-FEATURES = ["MedInc","HouseAge","AveRooms","AveBedrms","Population","AveOccup","Latitude","Longitude"]
+FEATURES = [
+    "MedInc",
+    "HouseAge",
+    "AveRooms",
+    "AveBedrms",
+    "Population",
+    "AveOccup",
+    "Latitude",
+    "Longitude",
+]
 TARGET = "MedHouseVal"
+
 
 @dataclass
 class SplitData:
@@ -15,11 +25,17 @@ class SplitData:
     y_train: pd.Series
     y_test: pd.Series
 
-def train_test_split_df(df: pd.DataFrame, test_size: float = 0.2, random_state: int = 42) -> SplitData:
+
+def train_test_split_df(
+    df: pd.DataFrame, test_size: float = 0.2, random_state: int = 42
+) -> SplitData:
     X = df[FEATURES]
     y = df[TARGET]
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=random_state)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=test_size, random_state=random_state
+    )
     return SplitData(X_train, X_test, y_train, y_test)
+
 
 def build_preprocessor() -> ColumnTransformer:
     return ColumnTransformer(
@@ -29,8 +45,6 @@ def build_preprocessor() -> ColumnTransformer:
         remainder="drop",
     )
 
+
 def build_pipeline(estimator) -> Pipeline:
-    return Pipeline(steps=[
-        ("preprocess", build_preprocessor()),
-        ("model", estimator)
-    ])
+    return Pipeline(steps=[("preprocess", build_preprocessor()), ("model", estimator)])

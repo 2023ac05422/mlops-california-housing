@@ -1,6 +1,7 @@
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import numpy as np
 
+
 def regression_metrics(y_true, y_pred) -> dict:
     return {
         "rmse": float(np.sqrt(mean_squared_error(y_true, y_pred))),

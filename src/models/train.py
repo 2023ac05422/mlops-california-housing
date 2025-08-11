@@ -14,6 +14,7 @@ PROD_DIR = Path("artifacts/production_model")
 EXPERIMENT_NAME = "california-housing-regression"
 MODEL_NAME = "california-regressor"
 
+
 def train_and_log(model_name: str, est, X_train, y_train, X_test, y_test):
     with mlflow.start_run(run_name=model_name):
         pipe = build_pipeline(est)
@@ -26,11 +27,14 @@ def train_and_log(model_name: str, est, X_train, y_train, X_test, y_test):
             mlflow.log_params(est.get_params())
         mlflow.log_metrics(m)
 
-        mlflow.sklearn.log_model(pipe, artifact_path="model", registered_model_name=None)
+        mlflow.sklearn.log_model(
+            pipe, artifact_path="model", registered_model_name=None
+        )
         mlflow.set_tag("model_name", model_name)
 
         run_id = mlflow.active_run().info.run_id
         return m, run_id
+
 
 if __name__ == "__main__":
     mlflow.set_experiment(EXPERIMENT_NAME)
@@ -40,12 +44,14 @@ if __name__ == "__main__":
 
     candidates = [
         ("LinearRegression", LinearRegression()),
-        ("DecisionTreeRegressor", DecisionTreeRegressor(random_state=42, max_depth=10))
+        ("DecisionTreeRegressor", DecisionTreeRegressor(random_state=42, max_depth=10)),
     ]
 
     results = []
     for name, est in candidates:
-        metrics, run_id = train_and_log(name, est, split.X_train, split.y_train, split.X_test, split.y_test)
+        metrics, run_id = train_and_log(
+            name, est, split.X_train, split.y_train, split.X_test, split.y_test
+        )
         results.append((name, metrics["rmse"], run_id, metrics))
 
     results.sort(key=lambda x: x[1])

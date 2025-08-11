@@ -2,6 +2,7 @@ import subprocess
 import time
 import requests
 
+
 def test_health():
     p = subprocess.Popen(["uvicorn", "api.main:app", "--port", "8001"])
     try:

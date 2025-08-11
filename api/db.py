@@ -5,6 +5,7 @@ import json
 
 DB_PATH = Path("predictions.sqlite")
 
+
 def init_db():
     conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
@@ -22,12 +23,18 @@ def init_db():
     conn.commit()
     conn.close()
 
+
 def log_prediction(payload: dict, prediction: float, model_version: str):
     conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
     cur.execute(
         "INSERT INTO prediction_logs (timestamp, payload, prediction, model_version) VALUES (?, ?, ?, ?)",
-        (datetime.utcnow().isoformat(), json.dumps(payload), float(prediction), model_version)
+        (
+            datetime.utcnow().isoformat(),
+            json.dumps(payload),
+            float(prediction),
+            model_version,
+        ),
     )
     conn.commit()
     conn.close()
