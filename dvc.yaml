@@ -1,0 +1,7 @@
+stages:
+  make_dataset:
+    cmd: python -m src.data.make_dataset
+    deps:
+      - src/data/make_dataset.py
+    outs:
+      - data/raw/california_housing.csv

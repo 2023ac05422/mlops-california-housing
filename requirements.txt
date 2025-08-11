@@ -1,0 +1,17 @@
+scikit-learn
+pandas
+numpy
+joblib
+mlflow
+fastapi
+uvicorn[standard]
+pydantic
+prometheus-client
+python-multipart
+dvc
+pytest
+requests
+flake8
+black
+isort
+matplotlib

@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+artifacts/
+mlruns/
+*.db
+*.sqlite
+data/processed/
+.DS_Store
+*.pyc
