@@ -65,18 +65,21 @@ Build, track, package, deploy, and monitor a regression model using best MLOps p
 ---
 
 ## 🔗 Useful Links
-- **GitHub Repo:** [https://github.com/YourUsername/mlops-california-housing](https://github.com/YourUsername/mlops-california-housing)
-- **Docker Hub:** [https://hub.docker.com/r/YourDockerHub/california-regressor](https://hub.docker.com/r/YourDockerHub/california-regressor)
+- **GitHub Repo:** [https://github.com/2023ac05422/mlops-california-housing](https://github.com/2023ac05422/mlops-california-housing.git)
+- **Docker Hub:** [https://hub.docker.com/repository/docker/kbatta/california-regressor](https://hub.docker.com/repository/docker/kbatta/california-regressor)
 - **MLflow UI:** `http://127.0.0.1:5000`
 - **Prometheus:** `http://localhost:9090`
 - **Grafana:** `http://localhost:3000`
+- **API Documentation:** `http://localhost:8000/docs`
 
 ---
 
 ## 👥 Contributors
 Thanks to the following people who contributed to this project:
 
-| Contributor | GitHub Profile |
+| Contributor | BITS Id |
 |-------------|----------------|
-| **Your Name** | [@YourUsername](https://github.com/YourUsername) |
-| *(Optional)* Collaborator Name | *(GitHub Profile Link)* |
+| **SHIVENDRA SINGH** | 2023ac05863 |
+| **G ANIL KUMAR** | 2023aa05757 |
+| **KARTIK BATTA | 2023ac05422 |
+| **NANCY AGARWAL | 2023ac05979 |
