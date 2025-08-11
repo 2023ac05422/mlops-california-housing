@@ -1,0 +1,3 @@
+best_run_id=511b9484020e463fae43e9355f26b1e7
+model=DecisionTreeRegressor
+rmse=0.644241830361174
