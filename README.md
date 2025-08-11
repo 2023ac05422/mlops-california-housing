@@ -42,12 +42,11 @@ A complete **MLOps project** demonstrating best practices from **data versioning
 ```
 
 ---
-
 ## 🚀 Quickstart
 
 ### 1️⃣ Clone & Install
 ```bash
-git clone https://github.com/YourUsername/mlops-california-housing.git
+git clone [https://github.com/2023ac05422/mlops-california-housing.git
 cd mlops-california-housing
 python -m venv venv
 source venv/bin/activate   # or .\venv\Scripts\activate on Windows
@@ -80,8 +79,8 @@ curl -X POST "http://127.0.0.1:8000/predict" -H "Content-Type: application/json"
 
 ### 5️⃣ Dockerize
 ```bash
-docker build -t yourdockerhub/california-regressor:latest .
-docker run -p 8000:8000 yourdockerhub/california-regressor:latest
+docker build -t kbatta/california-regressor:latest .
+docker run -p 8000:8000 kbatta/california-regressor:latest
 ```
 
 ### 6️⃣ Monitoring
@@ -112,22 +111,27 @@ docker compose up -d
 
 ---
 
-## 📜 License
-MIT © [Your Name](https://github.com/YourUsername)
-
 ---
 
 ## 🔗 Links
-- **GitHub Repo:** [https://github.com/YourUsername/mlops-california-housing](https://github.com/YourUsername/mlops-california-housing)
-- **Docker Hub Image:** [https://hub.docker.com/r/YourDockerHub/california-regressor](https://hub.docker.com/r/YourDockerHub/california-regressor)
+- **GitHub Repo:** [https://github.com/2023ac05422/mlops-california-housing](https://github.com/2023ac05422/mlops-california-housing.git)
+- **Docker Hub:** [https://hub.docker.com/repository/docker/kbatta/california-regressor](https://hub.docker.com/repository/docker/kbatta/california-regressor)
 - **MLflow UI:** `http://127.0.0.1:5000`
+- **Prometheus:** `http://localhost:9090`
+- **Grafana:** `http://localhost:3000`
+- **API Documentation:** `http://localhost:8000/docs`
 
 ---
 
 ## 👥 Contributors
 Thanks to the following people who contributed to this project:
 
-| Contributor | GitHub Profile |
+## 👥 Contributors
+Thanks to the following people who contributed to this project:
+
+| Contributor | BITS Id |
 |-------------|----------------|
-| **Your Name** | [@YourUsername](https://github.com/YourUsername) |
-| *(Optional)* Collaborator Name | *(GitHub Profile Link)* |
+| **SHIVENDRA SINGH** | 2023ac05863 |
+| **G ANIL KUMAR** | 2023aa05757 |
+| **KARTIK BATTA | 2023ac05422 |
+| **NANCY AGARWAL | 2023ac05979 |
