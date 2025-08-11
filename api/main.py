@@ -1,5 +1,6 @@
 import time
 import joblib
+import pandas as pd
 from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, field_validator
@@ -64,20 +65,16 @@ def predict(rec: HousingRecord):
     PRED_COUNT.inc()
     start = time.time()
     try:
-        X = [
-            [
-                rec.MedInc,
-                rec.HouseAge,
-                rec.AveRooms,
-                rec.AveBedrms,
-                rec.Population,
-                rec.AveOccup,
-                rec.Latitude,
-                rec.Longitude,
-            ]
-        ]
-        y_hat = app.state.pipeline.predict(X)[0]
-        log_prediction(rec.model_dump(), y_hat, app.state.model_version)
+        # Build a 1-row DataFrame with the exact feature names
+        df = pd.DataFrame([rec.model_dump()])  # {'MedInc': ..., 'HouseAge': ..., ...}
+        # Ensure numeric types (defensive)
+        df = df.astype(float)
+
+        y_hat = app.state.pipeline.predict(df)[0]
+
+        # log input + prediction + model version
+        log_prediction(rec.model_dump(), float(y_hat), app.state.model_version)
+
         return {"prediction": float(y_hat)}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
